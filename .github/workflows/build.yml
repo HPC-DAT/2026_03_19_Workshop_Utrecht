@@ -1,0 +1,44 @@
+name: Build apptainer image
+
+on:
+  # release:
+  #   types: [published]
+  push:
+    branches:
+      - main
+    paths:
+      - .github/**
+      - environment.yml
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+
+    - name: checkout files in repo
+      uses: actions/checkout@main
+
+    - name: setup apptainer
+      uses: eWaterCycle/setup-apptainer@v2
+
+    - name: build image
+      run: apptainer build container.sif .github/apptainer/conda_environment.def
+
+    # container registries require lowercase repo names.
+    # https://github.com/orgs/community/discussions/25768
+    - name: lowercase repo name
+      run: echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
+      
+    # https://hsf-training.github.io/hsf-training-singularity-webpage/09-bonus-episode/index.html
+    - name: push to registry
+      run: |
+         echo ${{ secrets.GITHUB_TOKEN }} | singularity remote login -u ${{ secrets.GHCR_USERNAME }} --password-stdin oras://ghcr.io
+         singularity push container.sif oras://ghcr.io/${REPO}:latest
+        #  singularity push container.sif oras://ghcr.io/${REPO}:${{ github.ref_name }}
+

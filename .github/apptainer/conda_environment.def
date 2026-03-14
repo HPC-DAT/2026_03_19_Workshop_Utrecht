@@ -1,0 +1,40 @@
+Bootstrap: docker
+From: condaforge/miniforge3
+Stage: builder
+
+%files
+    .github/apptainer/environment_default.yml
+    environment.yml
+
+%post
+    . /opt/conda/etc/profile.d/conda.sh
+
+    mamba install --yes conda-merge conda-pack
+
+    # merge project requirements with default dependencies (e.g. jupyter and dask),
+    # then build the conda environment
+    conda-merge .github/apptainer/environment_default.yml environment.yml > environment_merged.yml && \
+        mamba env create --name myenv --file environment_merged.yml
+
+    # pack the environment to /venv
+    conda-pack --name myenv --output /tmp/env.tar && \
+        mkdir /venv && \
+        cd /venv && \
+        tar xf /tmp/env.tar && \
+        rm /tmp/env.tar && \
+        /venv/bin/conda-unpack
+
+
+Bootstrap: docker
+From: debian:12-slim
+Stage: primary
+
+%files from builder
+    /venv /venv
+
+%environment
+    export PATH="/venv/bin:${PATH}"
+
+%runscript
+    # calling "apptainer run" will first activate the environment
+    bash -c "source /venv/bin/activate && exec $( test $# -eq 0 || /usr/bin/printf " %q" "$@" )"

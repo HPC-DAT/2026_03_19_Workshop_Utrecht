@@ -1,0 +1,10 @@
+name: default
+channels:
+ - conda-forge
+dependencies:
+ - dask-jobqueue
+ - dask-labextension
+ - dask[complete]
+ - jupyterlab-git
+ - jupyterlab>=3
+ - python-graphviz
