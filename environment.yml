@@ -17,6 +17,7 @@ dependencies:
  - pystac-client
  - python-graphviz
  - pip
+ - rasterio
  - rioxarray
  - shapely
  - scikit-learn
