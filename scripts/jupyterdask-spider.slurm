@@ -5,9 +5,10 @@
 #SBATCH --time=06:00:00
 #SBATCH --partition=normal
 #SBATCH --output=JobOut/%x-%j.out
-#SBATCH --reservation=lidarac
+##SBATCH --reservation=YourReservationName
+# Uncommemt the line above and replace YourReservationName by the actual reservation name when using a reservation
 
-APPTAINER_IMAGE="oras://ghcr.io/shiyifang/ahn4_on_spider:latest"
+APPTAINER_IMAGE="oras://ghcr.io/hpc-dat/2026_03_19_workshop_utrecht:latest"
 
 # Bind all paths from host system within the container
 _DIRS=`/usr/bin/ls -1 / | /usr/bin/awk '!/dev/' | /usr/bin/sed 's/^/\//g' `
@@ -27,7 +28,10 @@ export DASK_LABEXTENSION__FACTORY__MODULE="dask_jobqueue"
 export DASK_LABEXTENSION__FACTORY__CLASS="SLURMCluster"
 export DASK_JOBQUEUE__SLURM__DEATH_TIMEOUT=60
 export DASK_JOBQUEUE__SLURM__PYTHON=${PYTHON}
-export DASK_JOBQUEUE__SLURM__JOB_EXTRA_DIRECTIVES="['--output', 'JobOut/%x-%j.out', '--reservation', 'lidarac']"
+# run without reservation
+export DASK_JOBQUEUE__SLURM__JOB_EXTRA_DIRECTIVES="['--output', 'JobOut/%x-%j.out']
+#run with reservation: Uncomment line below (while commenting out line above) and replace insert resevation name
+#export DASK_JOBQUEUE__SLURM__JOB_EXTRA_DIRECTIVES="['--output', 'JobOut/%x-%j.out', '--reservation', 'YourReservationName']"
 export DASK_JOBQUEUE__SLURM__PROCESSES=4
 export DASK_JOBQUEUE__SLURM__CORES=4
 export DASK_JOBQUEUE__SLURM__MEMORY="48GiB"
