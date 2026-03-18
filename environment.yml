@@ -4,16 +4,25 @@ channels:
 dependencies:
  - python=3.12
  - dask
+ - fsspec
  - gdal
  - geopandas
+ - h5netcdf
  - matplotlib
  - odc-stac
+ - panel
  - pdal
  - python-pdal
+ - pystac
  - pystac-client
+ - python-graphviz
  - pip
  - rioxarray
  - shapely
  - scikit-learn
+ - xarray
+ - zarr
  - pip:
-   - laserfarm 
+   - dcachefs
+   - laserfarm
+   - stac2dcache 
