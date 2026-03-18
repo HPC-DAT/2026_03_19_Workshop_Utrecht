@@ -12,7 +12,7 @@ The workshop will:
 * Introduce the RS-DAT framework used to start Jupyter on a HPC system, with specific attention to SURF's systems
 * Introduce how to connect to the dCache mass storage system at SURF
 * Run through a short introduction to Dask and Xarray
-* Present, motivate and discuss best practices in the ude of Dask and Xarray on HPC
+* Present, motivate and discuss best practices in the use of Dask and Xarray on HPC
 * Present a number of use-cases: participants will be able to choose from and study in detail a number of real-world scaled-up scientific use-cases
 
 The workshop will make use of the [Spider](https://doc.spider.surfsara.nl/en/latest/Pages/about.html) cluster, a high-throuput data processing platform hosted by [SURF](https://www.surf.nl/).
