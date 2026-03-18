@@ -27,7 +27,7 @@ export DASK_JOBQUEUE__SLURM__PYTHON=${PYTHON}
 export DASK_JOBQUEUE__SLURM__JOB_EXTRA_DIRECTIVES="['--output', '.jupyterdask/%x-%j.out']"
 # run with reservation: Uncomment line below (while commenting out line above) and replace insert reservation name
 #export DASK_JOBQUEUE__SLURM__JOB_EXTRA_DIRECTIVES="['--output', '.jupyterdask/%x-%j.out', '--reservation', 'YourReservationName']"
-export DASK_JOBQUEUE__SLURM__PROCESSES=4
+export DASK_JOBQUEUE__SLURM__PROCESSES=1
 export DASK_JOBQUEUE__SLURM__CORES=2
 export DASK_JOBQUEUE__SLURM__MEMORY="48GiB"
 export DASK_JOBQUEUE__SLURM__WALLTIME="06:00:00"
