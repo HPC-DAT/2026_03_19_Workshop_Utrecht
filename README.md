@@ -54,7 +54,14 @@ Once this software is installed, follow the following setup steps:
 
 3. Download the following batch job script and save it to a known path (e.g. on your Desktop): [jupyterdask-spider.slurm](https://github.com/HPC-DAT/2026_03_19_Workshop_Utrecht/blob/main/scripts/jupyterdask-spider.slurm)
 
-4. Pick a Spider user account from the collaborative document (link and password to access the files will be given at the workshop). Add your name to the "participant" column, then download the private SSH key required to authenticate and save it to a known path (e.g. on your Desktop).
+4. Edit the just-downloaded job script to add the dCache access token, which you can find in the collaborative document (link will be given at the workshop):
+   ```shell
+   ...
+   export FSSPEC_DCACHE_TOKEN="<MACAROON>"
+   ...
+   ```
+   
+4. Pick a Spider user account from the collaborative document (password to access the files will be given at the workshop). Add your name to the "participant" column, then download the private SSH key required to authenticate and save it to a known path (e.g. on your Desktop).
 
 ## Run
 
