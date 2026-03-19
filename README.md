@@ -59,7 +59,7 @@ Once this software is installed, follow the following setup steps:
 
 2. Install the Python tool hosted in [this repository](https://github.com/RS-DAT/JupyterDaskOnSLURM/tree/main/tools/jupyterdask):
    ```shell
-   pip install -e "git+https://github.com/RS-DAT/JupyterDaskOnSLURM.git#egg=jupyterdask&subdirectory=tools/jupyterdask"
+   pip install "git+https://github.com/RS-DAT/JupyterDaskOnSLURM.git#egg=jupyterdask&subdirectory=tools/jupyterdask"
    jupyterdask --version  # check the command line tool is correctly installed
    ```
 
