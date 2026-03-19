@@ -5,25 +5,21 @@ dependencies:
  - python=3.12
  - dask
  - fsspec
- - gdal
  - geopandas
  - h5netcdf
+ - joblib
  - matplotlib
+ - numpy
  - odc-stac
  - panel
- - pdal
- - python-pdal
- - pystac
- - pystac-client
+ - pystac_client
  - python-graphviz
  - pip
- - rasterio
  - rioxarray
- - shapely
  - scikit-learn
+ - shapely
  - xarray
  - zarr
  - pip:
    - dcachefs
-   - laserfarm
    
