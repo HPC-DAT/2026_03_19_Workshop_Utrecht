@@ -5,8 +5,8 @@
 #SBATCH --time=06:00:00
 #SBATCH --partition=normal
 #SBATCH --output=.jupyterdask/%x-%j.out
-##SBATCH --reservation=YourReservationName
-# Uncommemt the line above and replace YourReservationName by the actual reservation name when using a reservation
+#SBATCH --reservation=remotesensing 
+# Remove the line above to run without a reservation
 
 APPTAINER_IMAGE="oras://ghcr.io/hpc-dat/2026_03_19_workshop_utrecht:latest"
 
@@ -24,9 +24,9 @@ export DASK_LABEXTENSION__FACTORY__CLASS="SLURMCluster"
 export DASK_JOBQUEUE__SLURM__DEATH_TIMEOUT=60
 export DASK_JOBQUEUE__SLURM__PYTHON=${PYTHON}
 # run without reservation
-export DASK_JOBQUEUE__SLURM__JOB_EXTRA_DIRECTIVES="['--output', '.jupyterdask/%x-%j.out']"
-# run with reservation: Uncomment line below (while commenting out line above) and replace insert reservation name
-#export DASK_JOBQUEUE__SLURM__JOB_EXTRA_DIRECTIVES="['--output', '.jupyterdask/%x-%j.out', '--reservation', 'YourReservationName']"
+#export DASK_JOBQUEUE__SLURM__JOB_EXTRA_DIRECTIVES="['--output', '.jupyterdask/%x-%j.out']"
+# run with reservation (during the workshop)
+export DASK_JOBQUEUE__SLURM__JOB_EXTRA_DIRECTIVES="['--output', '.jupyterdask/%x-%j.out', '--reservation', 'remotesensing']"
 export DASK_JOBQUEUE__SLURM__PROCESSES=1
 export DASK_JOBQUEUE__SLURM__CORES=2
 export DASK_JOBQUEUE__SLURM__MEMORY="48GiB"
