@@ -19,21 +19,10 @@ The workshop will make use of the [Spider](https://doc.spider.surfsara.nl/en/lat
 
 ## Repository structure
 
-* [`notebooks/`](./notebooks/) contains the Jupyter notebooks that implement the use case(s).
-* [`scripts/`](./scripts/) contains the batch job script to start a Jupyter session on Spider.
-* [`.github/`](./github) contains the scripts that take care of building and publishing a container image with the required dependencies.
 * [`environment.yml`](./environment.yml) is the environment file that define all the project dependencies.
-
-<!--
-## Data
-
-The data used in this workshop is available on the Spider system in the following directory:
-```
-/project/remotesensing/Data/eo-summer-school/
-```
-The dataset is also published on Zenodo: [link](https://zenodo.org/records/17044819)
-
--->
+* [`.github/`](./github) contains the scripts that take care of building and publishing a container image with the required dependencies.
+* [`scripts/`](./scripts/) contains the batch job script to start a Jupyter session on Spider.
+* [`notebooks/`](./notebooks/) contains the Jupyter notebooks which we will run in the training.
 
 ## Setup
 
